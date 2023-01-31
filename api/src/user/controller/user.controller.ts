@@ -31,6 +31,7 @@ export class UserController {
         return this.userService.deleteOne(Number(id));
     }
 
+    
     // http://localhost:3000/user/3
     @Put(':id')
     updateOne(@Param('id') id:string,@Body() user:User):Observable<any>{
