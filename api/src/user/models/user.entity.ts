@@ -7,15 +7,16 @@ export class userEntity {
 
     @Column()
     name:string;
-
     @Column({unique:true})
-    username:string
+    username:string;
     
-    @Column()
-    email:string
+    //adding {nullable:true--> since there was already column in db and values was null, was not able to proceed with that
+    // was facing issue--> Unable to connect to the database. QueryFailedError: column "email" contains null values}
+    @Column({nullable: true})
+    email:string;
 
-    @Column()
-    password:string
+    @Column({nullable: true})
+    password:string;
 
     @BeforeInsert()
     emailToLowerCase(){

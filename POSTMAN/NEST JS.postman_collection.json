@@ -151,7 +151,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"shweha\",\r\n    \"username\":\"j\"\r\n}",
+					"raw": "{\r\n        \"name\": \"mani\",\r\n        \"username\": \"hdsg\",\r\n        \"email\": \"mani@gmail.com\",\r\n        \"password\": \"hdsg\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -255,6 +255,35 @@
 					"path": [
 						"user",
 						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ncxvjssdfdsew@gmail.com\",\r\n    \"password\": \"nedsjsjfnsfdjdsfshsiuhw\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"login"
 					]
 				}
 			},

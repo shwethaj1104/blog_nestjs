@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { match } from 'assert';
 import { from, Observable,throwError } from 'rxjs';
 import { map, switchMap,catchError} from 'rxjs/operators';
 import { AuthService } from 'src/auth/auth/auth.service';
@@ -60,8 +61,40 @@ export class UserService {
         return from(this.userRepository.delete(id));
     }
     updateOne(id:number,user:User):Observable<any>{
+        //deleting email and password bcz we don't want anyone to update those 2 fields
         delete user.email;
         delete user.password;
+
         return from(this.userRepository.update(id,user));
+    }
+    login(user: User): Observable<string> {
+        console.log("user",user)
+        return this.validateUser(user.email, user.password).pipe(
+            switchMap((user: User) => {
+                if(user) {
+                    return this.authService.generateJWT(user).pipe(map((jwt: string) => jwt));
+                } else {
+                    return 'Wrong Credentials';
+                }
+            })
+        )
+    }
+    validateUser(email: string, password: string): Observable<User> {
+        return this.findByMail(email).pipe(
+            switchMap((user: User) => this.authService.comparePassword(password, user.password).pipe(
+                map((match: boolean) => {
+                    if(match) {
+                        const {password, ...result} = user;
+                        return result;
+                    } else {
+                        throw Error;
+                    }
+                })
+            ))
+        )
+
+    }
+    findByMail(email:string):Observable<User>{
+        return from(this.userRepository.findOneBy({email}))
     }
 }
