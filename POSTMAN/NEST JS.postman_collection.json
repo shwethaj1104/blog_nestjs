@@ -151,7 +151,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"name\": \"mani\",\r\n        \"username\": \"hdsg\",\r\n        \"email\": \"mani@gmail.com\",\r\n        \"password\": \"hdsg\"\r\n}",
+					"raw": "{\r\n        \"name\": \"new\",\r\n        \"username\": \"me\",\r\n        \"email\": \"newme@gmail.com\",\r\n        \"password\": \"newme@\",\r\n        \"role\":\"Admin\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -175,6 +175,16 @@
 		{
 			"name": "Get all users",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0LCJuYW1lIjoiYW5pIiwidXNlcm5hbWUiOiJsb3N0IiwiZW1haWwiOiJzaHdldGhhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiJ9LCJpYXQiOjE2NzU0MDc4NzIsImV4cCI6MTY3NTUwNzg3Mn0.5lhVF5UNdzkaat4c7C3qGeFjuaUomGlFRnJ_8MejF7A",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -197,7 +207,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/user/1",
+					"raw": "http://localhost:3000/user/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -205,7 +215,7 @@
 					"port": "3000",
 					"path": [
 						"user",
-						"1"
+						"4"
 					]
 				}
 			},
@@ -216,35 +226,6 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/user/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"user",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update user",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n        \"name\": \"niha\",\r\n        \"username\": \"jaya\"\r\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "http://localhost:3000/user/3",
 					"protocol": "http",
@@ -261,13 +242,42 @@
 			"response": []
 		},
 		{
+			"name": "Update user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"ani\",\r\n    \"username\": \"lost\",\r\n    \"email\": \"shwetha@gmail.com\",\r\n    \"password\":\"gdsgfjs\",\r\n    \"role\":\"Admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "login",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"ncxvjssdfdsew@gmail.com\",\r\n    \"password\": \"nedsjsjfnsfdjdsfshsiuhw\"\r\n}",
+					"raw": "{\r\n    \"email\": \"niha@gmail.com\",\r\n    \"password\": \"JayaAmaraght123@\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -284,6 +294,46 @@
 					"path": [
 						"user",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Role",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0LCJuYW1lIjoiYW5pIiwidXNlcm5hbWUiOiJsb3N0IiwiZW1haWwiOiJzaHdldGhhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiJ9LCJpYXQiOjE2NzU0MDc4NzIsImV4cCI6MTY3NTUwNzg3Mn0.5lhVF5UNdzkaat4c7C3qGeFjuaUomGlFRnJ_8MejF7A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"role\":\"Editor\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/7/role",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"7",
+						"role"
 					]
 				}
 			},

@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { match } from 'assert';
 import { from, Observable,throwError } from 'rxjs';
 import { map, switchMap,catchError} from 'rxjs/operators';
-import { AuthService } from 'src/auth/auth/auth.service';
+import { AuthService } from 'src/auth/services/auth.service';
 import { Repository } from 'typeorm';
 import { userEntity } from '../models/user.entity';
 import { User } from '../models/user.interface';
@@ -22,8 +22,10 @@ export class UserService {
                 const newUser= new userEntity();
                 newUser.email = user.email;
                 newUser.name = user.name;
-                newUser.password = user.password;
+                // newUser.password = user.password;
+                newUser.password = passwordHash;
                 newUser.username = user.username;
+                newUser.role = user.role;
 
                 return from(this.userRepository.save(newUser)).pipe(
                     map((user:User)=>{
@@ -41,6 +43,7 @@ export class UserService {
     findOne(id:number):Observable<User>{
         return from(this.userRepository.findOneBy({id})).pipe(
             map((user:User)=>{
+                console.log("user",user)
                 const {password,...result}=user;
                 return result;
             })
@@ -60,6 +63,7 @@ export class UserService {
     deleteOne(id:number):Observable<any>{
         return from(this.userRepository.delete(id));
     }
+
     updateOne(id:number,user:User):Observable<any>{
         //deleting email and password bcz we don't want anyone to update those 2 fields
         delete user.email;
@@ -67,8 +71,12 @@ export class UserService {
 
         return from(this.userRepository.update(id,user));
     }
+
+    updateRoleOfUser(id:number,user:User):Observable<any>{
+        return from(this.userRepository.update(id,user));
+    }
+    
     login(user: User): Observable<string> {
-        console.log("user",user)
         return this.validateUser(user.email, user.password).pipe(
             switchMap((user: User) => {
                 if(user) {
@@ -77,11 +85,13 @@ export class UserService {
                     return 'Wrong Credentials';
                 }
             })
-        )
-    }
-    validateUser(email: string, password: string): Observable<User> {
+            )
+        }
+        
+        validateUser(email: string, password: string): Observable<User> {
         return this.findByMail(email).pipe(
-            switchMap((user: User) => this.authService.comparePassword(password, user.password).pipe(
+            // switchMap((user: User) => this.authService.comparePasswords('gfdsagfagd', 'gfdsagfagd').pipe(
+                switchMap((user: User) => this.authService.comparePasswords(password, user.password).pipe(
                 map((match: boolean) => {
                     if(match) {
                         const {password, ...result} = user;
@@ -94,7 +104,8 @@ export class UserService {
         )
 
     }
-    findByMail(email:string):Observable<User>{
-        return from(this.userRepository.findOneBy({email}))
+
+    findByMail(email: string): Observable<User> {
+        return from(this.userRepository.findOneBy({email}));
     }
 }
