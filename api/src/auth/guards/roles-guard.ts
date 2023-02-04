@@ -21,7 +21,7 @@ export class RolesGuard implements CanActivate {
         map((user:User)=>{
             const hasRole=()=>roles.indexOf(user.role)>-1;
             let hasPermission:boolean=false;
-            console.log("hasRole()",hasRole)
+            // console.log("hasRole()",hasRole)
 
             if(hasRole()){console.log("if hasRole is true");hasPermission=true}
             return user && hasPermission
