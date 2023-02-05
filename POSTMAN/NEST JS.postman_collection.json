@@ -338,6 +338,67 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get profile image",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/profile-image/imagepng09c7daf3-73f7-4107-bddd-29b3c7e4cb9f.png",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"profile-image",
+						"imagepng09c7daf3-73f7-4107-bddd-29b3c7e4cb9f.png"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo5LCJuYW1lIjoibmloYWoiLCJ1c2VybmFtZSI6Im5paGEiLCJlbWFpbCI6Im5paGFAZ21haWwuY29tIiwicm9sZSI6IlVzZXIifSwiaWF0IjoxNjc1NTg0NDI3LCJleHAiOjE2NzU2ODQ0Mjd9.tandNUNmiQviQ3-qqJQzZCA3VnsrUEyMErfFDS4HTMQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/admin/OneDrive/Desktop/image png.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"upload"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
