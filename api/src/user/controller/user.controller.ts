@@ -14,6 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 // import path from 'path';
 import path = require('path');
 import { join } from 'path';
+import { UserIsUserGuard } from 'src/auth/guards/UserIsUser.guard';
 
 export const storage = {
     storage: diskStorage({
@@ -88,6 +89,7 @@ export class UserController {
 
     
     // http://localhost:3000/user/3
+    @UseGuards(JwtAuthGuard,UserIsUserGuard)
     @Put(':id')
     updateOne(@Param('id') id:string,@Body() user:User):Observable<any>{
         return this.userService.updateOne(Number(id),user);

@@ -244,11 +244,21 @@
 		{
 			"name": "Update user",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0LCJuYW1lIjoiYW5pIiwidXNlcm5hbWUiOiJsb3N0IiwiZW1haWwiOiJzaHdldGhhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsInByb2ZpbGVJbWFnZSI6bnVsbH0sImlhdCI6MTY3NTU5NTA2OSwiZXhwIjoxNjc1Njk1MDY5fQ.IgzUvx2tXi24ZZEteP7ldZuEaQJenqPSy4MLl2wZeeA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"ani\",\r\n    \"username\": \"lost\",\r\n    \"email\": \"shwetha@gmail.com\",\r\n    \"password\":\"gdsgfjs\",\r\n    \"role\":\"Admin\"\r\n}",
+					"raw": "{\r\n    \"name\": \"ani11123\",\r\n    \"username\": \"lost\",\r\n    \"email\": \"shwetha@gmail.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
