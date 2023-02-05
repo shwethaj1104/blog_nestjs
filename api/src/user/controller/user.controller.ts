@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { Query, UseGuards } from '@nestjs/common/decorators';
+import { Query, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common/decorators';
 import { get } from 'http';
 import { Pagination } from 'nestjs-typeorm-paginate';
 import { catchError, map, Observable, of } from 'rxjs';
@@ -8,7 +8,24 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-guard';
 import { RolesGuard } from 'src/auth/guards/roles-guard';
 import { User, UserRole } from '../models/user.interface';
 import { UserService } from '../service/user.service';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { v4 as uuidv4 } from 'uuid';
+// import path from 'path';
+import path = require('path');
 
+export const storage = {
+    storage: diskStorage({
+        destination: './uploads/profileimages',
+        filename: (req, file, cb) => {
+            const filename: string = path.parse(file.originalname).name.replace(/\s/g, '') + uuidv4();
+            const extension: string = path.parse(file.originalname).ext;
+
+            cb(null, `${filename}${extension}`)
+        }
+    })
+
+}
 @Controller('user')
 export class UserController {
     constructor(private userService: UserService) { }
@@ -82,5 +99,25 @@ export class UserController {
      updateRoleOfUser(@Param('id') id:string,@Body() user:User):Observable<User>{
          return this.userService.updateRoleOfUser(Number(id),user);
      }
+
+    //  @UseGuards(JwtAuthGuard)
+    //  @Post('upload')
+    //  @UseInterceptors(FileInterceptor('file', storage))
+    //  uploadFile(@UploadedFile() file, @Request() req): Observable<Object> {
+    //      const user: User = req.user;
+ 
+    //      return this.userService.updateOne(user.id, {profileImage: file.filename}).pipe(
+    //          tap((user: User) => console.log(user)),
+    //          map((user:User) => ({profileImage: user.profileImage}))
+    //      )
+    //  }
+
+    // @UseGuards(JwtAuthGuard)
+    @Post('upload')
+    @UseInterceptors(FileInterceptor('file',storage))
+    uploadFile(@UploadedFile() file): Observable<Object> {
+        console.log("file",file)
+        return of({imagePath:file.filename});
+    }
 
 }
