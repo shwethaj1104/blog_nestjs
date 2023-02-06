@@ -486,6 +486,75 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Update Blog",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0LCJuYW1lIjoiYW5pMTExMjMiLCJ1c2VybmFtZSI6Imxvc3QiLCJlbWFpbCI6InNod2V0aGFAZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwicHJvZmlsZUltYWdlIjpudWxsfSwiaWF0IjoxNjc1NjkyNzEyLCJleHAiOjE2NzU3OTI3MTJ9.Tw43M3RpqZiVy5H_eDO7qfyvIFLbKCtC2gHx0bIQRgU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"6th feb\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/blog/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blog",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Blog",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0LCJuYW1lIjoiYW5pMTExMjMiLCJ1c2VybmFtZSI6Imxvc3QiLCJlbWFpbCI6InNod2V0aGFAZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwicHJvZmlsZUltYWdlIjpudWxsfSwiaWF0IjoxNjc1NjkyNzEyLCJleHAiOjE2NzU3OTI3MTJ9.Tw43M3RpqZiVy5H_eDO7qfyvIFLbKCtC2gHx0bIQRgU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/blog/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blog",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
