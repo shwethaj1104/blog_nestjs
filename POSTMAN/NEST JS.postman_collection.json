@@ -409,6 +409,83 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Create Blog Entry",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0LCJuYW1lIjoiYW5pMTExMjMiLCJ1c2VybmFtZSI6Imxvc3QiLCJlbWFpbCI6InNod2V0aGFAZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwicHJvZmlsZUltYWdlIjpudWxsfSwiaWF0IjoxNjc1Njc2NTk2LCJleHAiOjE2NzU3NzY1OTZ9.JhiLwTFJbMeJScblXN9EP745O8QLVY52pREihnSlLP0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"test title\",\r\n    \"description\":\"test description\",\r\n    \"body\":\"test body\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/blog",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Blogs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/blog",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Blog ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/blog/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blog",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

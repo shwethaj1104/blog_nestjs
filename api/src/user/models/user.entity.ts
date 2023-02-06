@@ -17,8 +17,10 @@ export class userEntity {
     // was facing issue--> Unable to connect to the database. QueryFailedError: column "email" contains null values}
     @Column({nullable: true})
     email:string;
+    
+    //select false==> in response we won't see password
 
-    @Column({nullable: true})
+    @Column({nullable: true,select:false})
     password:string;
 
     @Column({type:'enum',enum:UserRole,default:UserRole.USER})
