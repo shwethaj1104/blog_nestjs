@@ -576,6 +576,96 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Upload blog image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0LCJuYW1lIjoiYW5pMTExMjMiLCJ1c2VybmFtZSI6Imxvc3QiLCJlbWFpbCI6InNod2V0aGFAZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwicHJvZmlsZUltYWdlIjpudWxsfSwiaWF0IjoxNjc1Nzc5ODMzLCJleHAiOjE2NzU4Nzk4MzN9.2gCXpse4ins1ZzLVfCbCtgvZ7o8Aaq_mp4bOssvuFvA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file\n",
+							"type": "file",
+							"src": "/C:/Users/admin/Downloads/image.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/blog/image/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blog",
+						"image",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get blog image",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file\n",
+							"type": "file",
+							"src": "/C:/Users/admin/Downloads/image.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/blog/image/imagename",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blog",
+						"image",
+						"imagename"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
