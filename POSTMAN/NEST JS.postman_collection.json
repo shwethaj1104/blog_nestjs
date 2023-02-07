@@ -287,7 +287,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"niha@gmail.com\",\r\n    \"password\": \"JayaAmaraght123@\"\r\n}",
+					"raw": "{\r\n  \"email\": \"shwetha@gmail.com\",\r\n    \"password\":\"gdsgfjs\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -551,6 +551,27 @@
 					"path": [
 						"blog",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Blogs by User ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/blog/user/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blog",
+						"user",
+						"4"
 					]
 				}
 			},
